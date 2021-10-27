@@ -1,0 +1,20 @@
+﻿@model Weather.Core.Models.Weather
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@Model.Name
+<br/>
+@*@Model.Id*@
+<br />
+@Model.Sys.Country
+<br />
+@Model.Wind.Speed
+<br />
+@Model.Clouds.CloudsAll
+<br />
+@Model.Main.Temperature
+
+
