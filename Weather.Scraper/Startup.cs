@@ -14,14 +14,11 @@ namespace Weather.Scraper
     
     public class Startup : FunctionsStartup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; private set; }
         public override void Configure(IFunctionsHostBuilder builder)
         {
+            Configuration = builder.GetContext().Configuration;
             builder.Services.AddDbContext<WeatherDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("WeatherDbContext")));
             builder.Services.AddScoped<IWeatherDbContext, WeatherDbContext>();
